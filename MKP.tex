@@ -1,0 +1,392 @@
+\documentclass[10pt,oneside]{article}
+%\documentclass[12pt,oneside]{book}
+\usepackage[utf8]{inputenc}
+
+% Basic packages
+	\usepackage{amssymb}
+	\usepackage{amsmath}
+	\usepackage{graphicx}
+	\usepackage[czech]{babel}
+	\usepackage{natbib}
+
+% Relevant packages
+	\usepackage{bm}
+	\usepackage{bbm}
+
+	%\usepackage{titling,lipsum} % titling page
+	%\usepackage{nccmath} % for fleqn
+	\usepackage{enumitem} %enumeration
+	%\usepackage{xcolor} %colored text for cmts
+	%\usepackage{bbm} % blackboard bold math
+	%\usepackage{multirow} % multiple rows in tables
+	%\usepackage{lscape} % for landscape section*
+	%\usepackage{wrapfig}
+	\usepackage{multicol}
+	%\usepackage[none]{hyphenat} % no hyphenation
+	%\global\hyphenpenalty=100000
+	%\usepackage{caption}
+	%\usepackage{subcaption} % for sub-figures
+	%\usepackage{tabularx}
+	%\usepackage{makecell}
+	%\usepackage{nccmath}% for fleqn
+	%\usepackage{float}
+	%\usepackage{minted}
+	%\usepackage{pdfpages}
+	%\usepackage{hyperref}
+
+% Document settings
+	\usepackage{geometry}
+	\geometry{
+		a4paper,
+		margin=15mm
+	}
+	\setlength{\parindent}{0pt}
+	\setlength{\parskip}{0.5em}
+	\setlength{\abovedisplayskip}{0em}
+	\setlength{\belowdisplayskip}{0em}
+
+	\setlist{itemsep=0em,topsep=0em}
+
+	%\numberwithin{equation*}{section*}
+	%\numberwithin{figure}{section*}
+
+% Macros
+	\usepackage{lingebra_macros}
+
+	\newcommand{\ul}[1]{\underline{#1}}
+	\newcommand{\ull}[1]{\underline{\underline{#1}}}
+
+\begin{document}
+\section*{Variační princip}
+\subsection*{Oblast tělesa}
+
+Těleso reprezentujeme jako oblast $\Omega$ v euklidovském prostoru $\mathbbm{E}_3$ s hranicí $\partial\Omega$:
+%
+\begin{equation*}
+	\partial\Omega_\sigma \cup \partial\Omega_u = \partial\Omega \ \quad \partial\Omega_\sigma \cap \partial\Omega_u = \emptyset
+\end{equation*}
+%
+\begin{itemize}
+	\item[$\partial\Omega_\sigma$] - část se silovou okrajovou podmínkou
+	\item[$\partial\Omega_u$] - část s kinematickou okrajovou podmínkou
+\end{itemize}
+
+\subsection*{Celková potenciální energie}
+%
+\begin{equation*}
+	\Pi = U - W = \frac{1}{2}\int\limits_\Omega \sigma_{ij} \epsilon_{ij} \,dV - \Bigg( \int\limits_\Omega X_i u_i \,dV + \int\limits_{\partial\Omega_\sigma} p_i u_i \,dS \Bigg)
+	\ ,\quad
+	\epsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \bigg)
+\end{equation*}
+%
+\begin{itemize}
+	\item[$U$] - deformační energie
+	\item[$W$] - potenciál vnějších sil
+	\item[$\tenz{\sigma}$] - tenzorové pole napjatostí
+	\item[$\tenz{\epsilon}$] - Cauchyho tenzor deformací
+	\item[$\vec{X}$] - pole vnějších objemových sil
+	\item[$\vec{u}$] - pole posuvů
+	\item[$\vec{p}$] - vektor vnějších povrchových sil
+\end{itemize}
+
+\subsection*{Staticky přípustné pole napětí}
+%
+Staticky přípustné pole napětí je každé tensorové pole $\tenz{\sigma}(x,y,z)$, které splňuje rovnice rovnováhy
+%
+\begin{equation*}
+	\frac{\partial \sigma_{ij}}{\partial x_j} + X_i = 0 \ ,\quad \sigma_{ij} \in \mathbbm{C}^1_\Omega
+\end{equation*}
+%
+a silové okrajové podmínky:
+%
+\begin{equation*}
+	\sigma_{ij} n^0_j = p_i \ ,\quad \forall\,[x,y,z] \in \partial\Omega_\sigma
+\end{equation*}
+%
+kde $\vec{n}^0$ je normála na hranici $\partial\Omega$
+
+\subsection*{Kinematicky přípustné pole posuvů}
+%
+Kinematicky přípustné pole posuvů je každé vektorové pole $\vec{u}(x,y,z)$, které je spojitě diferencovatelné a splňuje kinematické okrajové podmínky
+%
+\begin{equation*}
+\vec{u}(x,y,z) = \vec{u}_{\partial\Omega}(x,y,z) \,,\quad \forall\,[x,y,z] \in \partial\Omega
+\end{equation*}
+%
+kde $\vec{u}_{\partial\Omega}$ jsou vynucené posuvy.
+
+\newpage
+\subsection*{Princip virtuálních prací}
+%
+Platí identita
+%
+\begin{equation*}
+	\int\limits_\Omega \sigma_{ij} \epsilon_{ij} \,dV - \int\limits_\Omega X_i u_i \,dV - \int\limits_{\partial\Omega_\sigma} p_i u_i \,dS - \int\limits_{\partial\Omega_u} \sigma_{ij} n^0_j u_i \,dS = 0
+\end{equation*}
+%
+pokud:
+\begin{itemize}
+\item[$\tenz{\sigma}$] - staticky přípustné pole napjatosti
+\item[$\vec{u}$] - kinematicky přípustné pole posuvů
+\end{itemize}
+
+
+\subsection*{Princip virtuálních posuvů}
+%
+Platí identita
+%
+\begin{equation*}
+	\int\limits_\Omega \sigma_{ij}^0 \delta\epsilon_{ij} \,dV - \int\limits_\Omega X_i \delta u_i \,dV - \int\limits_{\partial\Omega_\sigma} p_i \delta u_i \,dS = 0
+	\ ,\quad
+	\delta\epsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial \delta u_i}{\partial x_j} + \frac{\partial \delta u_j}{\partial x_i} \bigg)
+\end{equation*}
+%
+pokud $\vec{u}^0 + \delta\vec{u}$ je kinematicky přípustné pole posuvů
+%
+\begin{equation*}
+	\vec{u}^0 + \delta\vec{u} = \vec{u}_{\partial\Omega}(x,y,z) \,,\ \forall\,[x,y,z] \in \partial\Omega
+	\quad \Rightarrow \quad
+	\delta\vec{u} = \vec{0} \,,\ \forall\,[x,y,z] \in \partial\Omega_u
+\end{equation*}
+%
+kde
+%
+\begin{itemize}[leftmargin=15mm]
+	\item[$\vec{u}^0,\tenz{\sigma}^0$] - řešení úlohy pružnosti
+	\item[$\delta\tenz{\epsilon}$] - Cauchyho tenzor virtuálních deformací
+	\item[$\delta\vec{u}$] - pole virtuálních posuvů %( \delta\vec{u}(\vec{r}) = \vec{0} \,, \vec{r} \in \partial\Omega_u)\\
+\end{itemize}
+
+\newpage
+\section*{MKP}
+%
+\subsection*{1D element}
+\textbf{Obecný posuv $u(\xi)$ a deformace $\epsilon(\xi)$ elementu}
+\begin{align*}
+	u(\xi) &= \ul{N}^e\!(\xi)\, \ul{\delta}^e
+	\,,\quad \ul{N}^e = \begin{bmatrix} 1-\frac{\xi}{l} \\ \frac{\xi}{l} \end{bmatrix} - \text{matice tvarových funkcí} \\
+	\epsilon(\xi) &= \ul{B}^e\!(\xi)\, \ul{\delta}^e
+	\,,\quad \ul{B}^e = \frac{\partial \ul{N}^e}{\partial \xi} = \begin{bmatrix} -\frac{1}{l} \\ \frac{1}{l} \end{bmatrix} - \text{operátor z uzlových posuvů na deformace}
+\end{align*}
+kde
+\begin{itemize}
+	\item [$\ul{\delta}^e$] = $[\, u_1^e \, u_2^e \,]^T$ - vektor posuvů uzlových bodů
+\end{itemize}
+
+\textbf{Deformační energie elementu $U^e$}
+\begin{align*}
+	U^e &= \frac{1}{2} \int\limits_0^l E \epsilon^2(\xi) A d\xi
+		%= \frac{1}{2} \int\limits_0^l \epsilon(\xi) E A\,\epsilon(\xi) d\xi
+		= \frac{1}{2}\ \ul{\delta}^{e^T} \underbrace{\int\limits_0^l \ul{B}^{e^T}\!E A\,\ul{B}^e d\xi}_{\ull{K}^e}\ \ul{\delta}^e
+		= \frac{1}{2}\ \ul{\delta}^{e^T}\!\ull{K}^e\ \ul{\delta}^e
+		\,,\quad
+		\ull{K}^e - \text{matice tuhosti elementu}
+\end{align*}
+
+\textbf{Objemová síla $X(\xi)$ v místě $\xi$}
+\begin{equation*}
+	X(\xi) = \ul{N}^e\!(\xi) \ul{X}^e
+	\,,\quad \ul{X}^e - \text{pole uzlových objemových sil}
+\end{equation*}
+
+\textbf{Potenciál vnější objemové síly $W^e$}
+\begin{equation*}
+	W^e = \int\limits_0^l u(\xi) X(\xi) A d\xi
+		= \ul{\delta}^{e^T} \underbrace{\int\limits_0^l \ul{N}^{e^T} \ul{N}^e A\,d\xi\ \ul{X}^e}_{\ul{F}^e}
+		= \ul{\delta}^{e^T} \ul{F}^e
+		\,,\quad
+		\ul{F}^e - \text{vektor ekvivalentních uzlových sil}
+\end{equation*}
+
+\textbf{Celková potenciální energie elementu}
+\begin{equation*}
+\Pi^e = U^e - W^e
+	=  \frac{1}{2}\ \ul{\delta}^{e^T} \underbrace{\int\limits_0^l \ul{B}^{e^T}\!E A\,\ul{B}^e d\xi}_{\ull{K}^e}\ \ul{\delta}^e
+	- \ul{\delta}^{e^T} \underbrace{\int\limits_0^l \ul{N}^{e^T} \ul{N}^e A\,d\xi\ \ul{X}^e}_{\ul{F}^e}
+	= \frac{1}{2}\ \ul{\delta}^{e^T}\!\ull{K}^e\ \ul{\delta}^e - \ul{\delta}^{e^T} \ul{F}^e
+\end{equation*}
+
+\textbf{Celková potenciální energie modelu}
+\begin{equation*}
+	\begin{aligned}
+		\Pi &= \sum\limits_{e=1}^{N_e} \Pi^e
+			= \sum\limits_{e=1}^{N_e} \bigg(\, \frac{1}{2}\ \ul{\delta}^{e^T}\!\ull{K}^e\ \ul{\delta}^e - \ul{\delta}^{e^T} \ul{F}^e \,\bigg)
+			= \sum\limits_{e=1}^{N_e} \bigg(\, \frac{1}{2}\ul{\Delta}^T \ull{\tilde{K}}^e\ \ul{\Delta} - \ul{\Delta}^T \ul{\tilde{F}}^e \,\bigg)
+			= \frac{1}{2}\ul{\Delta}^T \ull{K}\ \ul{\Delta} - \ul{\Delta}^T \ul{F} 
+			%= \frac{1}{2} \Delta_i^T K_{ij} \Delta_j - \Delta_i F_i
+	\end{aligned}
+\end{equation*}
+%
+kde
+%
+\begin{multicols}{2}
+	\begin{itemize}
+		\item [$\ul{\Delta}$] - vektor globálních uzlových posuvů
+		\\[-.5em]
+		\item [$\ull{K}$] - globální matice tuhosti
+		\item [$\ull{\tilde{K}}^e$] - matice tuhosti elementu o rozměru $\ull{K}$
+		\\[.5em]
+		\item [$\ul{F}$] - globální vektor ekvivalentních uzlových sil
+		\item [$\ul{\tilde{F}}^e$] - vektor ekvivalentních uzlových sil elementu o rozměru $\ul{F}$
+	\end{itemize}
+\end{multicols}
+
+\textbf{Princip minima celkové potenciální energie}
+\begin{equation*}
+	\begin{aligned}
+		\frac{\partial \Pi}{\partial \Delta_m} &= 0 \,;\quad m = 1,\dots,N_{DOF} \,;\quad N_{DOF} - \text{počet stupňů volnosti úlohy} \\
+		&= \frac{\frac{1}{2} K_{ij} \Delta_i \Delta_j - \Delta_i F_i}{\partial \Delta_m} = \frac{1}{2} K_{mj} \Delta_j + \frac{1}{2} K_{im} \Delta_i - F_m = K_{mj} \Delta_j - F_m = 0
+	\end{aligned}
+\end{equation*}
+%
+\begin{equation*}
+	\ull{K}\,\ul{\Delta} = \ul{F} \quad \Rightarrow \quad \frac{\partial \Pi}{\partial \Delta_m} = 0
+\end{equation*}
+
+\newpage
+\subsection*{2D element}
+\begin{multicols}{2}
+\begin{itemize}
+	\item [$x,y$] - souřadnice v prostoru
+	\item [$\ul{\delta}^e$] - pole posuvů elementu
+	\\[-.5em]
+	\item [$\ul{u}$] - pole posuvů elementu
+	\item [$\ul{\epsilon}$] - pole deformací elementu
+	\\[-.5em]
+	\item [$\ul{\alpha}$] - Parametry pole posuvů
+	\item [$\ull{A}$] - 
+	\item [$\ull{S}$] -
+	\item [$\ull{D}$] - Diferenciální operátor mezi posuvy a deformacemi
+	\\[-.5em]
+	\item [$\ull{N}^e$] - Matice tvarových funkcí
+	\item [$\ull{B}^e$] - Operátor uzlových posunů na deformace
+	\\[-.5em]
+	\item [$\ul{\epsilon}_0$] - pole deformací elementu vlivem teploty
+	\item [$\ul{\epsilon}_\sigma$] - pole deformací elementu vlivem napětí
+	\\[-.5em]
+	\item [$U$] - Deformační energie
+	\item [$\ull{E}^e$] - matice bůhví čeho 
+	\item [$\ull{K}^e$] - matice tuhosti elementu
+	\\[-.5em]
+	\item [$\Pi$] - Celková potenciální energie
+	\item [$\ul{p}$] - pole vnějších povrchových sil ???
+	\item [$\ul{X}$] - pole vnějších objemových sil ???
+	\\[-.5em]
+	\item [$\ul{\tilde{F}}^{eE}$] - objemová síla (konstantní)
+	\item [$\ul{F}^{l}$] - liniová vnější síla (abstrakce tlaku)
+	%\item [$\ul{F}^{ET}$] - ekvivalentní uzlová síla objemové síly
+	%\item [$W^{fe}$] - potenciál vnější objemové síly
+	%\item [$W^{le}$] - potenciál liniové síly v elementu
+	%\item [$\ul{\mathcal{F}}^{l}$] - vektor uzlových hodnot liniové vnější síly
+\end{itemize}
+\end{multicols}
+%
+\textbf{Pole posuvů $\ul{u}(x,y)$ a deformací $\ul{\epsilon}(x,y)$ elementu}
+%Pole posuvů $\ul{u}$ a deformací $\ul{\epsilon}$ elementu lze vyjádřit jako funkci souřadnic $x,y$ a vektoru uzlových posuvů elementu $\ul{\delta}^e$:
+%
+\begin{align*}
+	\ul{u}(x,y) &= \ull{A}(x,y)\,\ul{\alpha} = \ull{A}(x,y)\,\ull{S}^{-1} \ul{\delta}^e = \ull{N}^e(x,y)\,\ul{\delta}^e\\
+	\ul{\epsilon}(x,y) &= \ull{D}\,\ull{N}^e(x,y)\,\ul{\delta}^e = \ull{B}^e(x,y)\,\ul{\delta}^e \\
+\end{align*}
+%
+%\textbf{Deformační energie}
+%\begin{equation*}
+%	U	= \frac{1}{2} \int\limits_\Omega \ul{\epsilon}^T \ull{E}\ \ul{\epsilon} \ dV
+%		= \frac{1}{2}\,\ul{\delta}^{e^T}\!\Big( \int\limits_\Omega \ull{B}^T \ull{E}\,\ull{B} \ dV \Big) \ul{\delta}^e
+%		= \frac{1}{2}\,\ul{\delta}^{e^T}\!\ull{K}^e\,\ul{\delta}^e
+%\end{equation*}
+
+\textbf{Změna pole deformací $\ul{\epsilon}$ vlivem teploty}
+%Izotropní tenzor deformace od teploty
+%\begin{equation*}
+%	\tenz{\epsilon}_0 = \alpha \Delta T \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}
+%\end{equation*}
+%
+\begin{align*}
+	\ul{\epsilon} = \ul{\epsilon}_\sigma + \ul{\epsilon}_0 \,,\quad \ul{\epsilon}_0 = \alpha \Delta T \begin{bmatrix}1\\1\\0\end{bmatrix}
+\end{align*}
+%
+\textbf{Hustota deformační energie $\Lambda$}
+\begin{equation*}
+	\Lambda = \frac{1}{2}\,\ul{\epsilon}^T \ul{\sigma}
+		= \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,\ul{\epsilon}_\sigma
+		= \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,(\ul{\epsilon} - \ul{\epsilon}_0)
+		= \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,\ul{\epsilon} - \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,\ul{\epsilon}_0
+\end{equation*}
+
+\textbf{Deformační energie $U$}
+\begin{equation*}
+U = \int\limits_\Omega \Lambda \ dV
+	= \frac{1}{2} \int\limits_\Omega \ul{\epsilon}^T \ull{E}\,\ul{\epsilon} \ dV
+	+ \frac{1}{2} \int\limits_\Omega \ul{\epsilon}^T \ull{E}\,\ul{\epsilon}_0 \ dV
+	= \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ull{B}^e\,dV}_{\ull{K}^e} \ul{\delta}^e
+	- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\epsilon}_0 \ dV}_{\ul{F}^{ET}}
+	%= \frac{1}{2}\,\ul{\delta}^e \ull{K}^e \ul{\delta}^e - \frac{1}{2}\,\ul{\delta}^e\!\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\epsilon}_0 \ dV
+\end{equation*}
+%
+%\textbf{Potenciál vnější objemové síly}
+%
+%\begin{equation*}
+%	W^{fe} = \int\limits_\Omega \ul{u}^T(x,y) \ul{\tilde{F}}^{eE} \ dV
+%		= \ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{N}^{e^T}\!(x,y)\,\ul{F}^{eE} \ dV}_{F^{V\!E}}
+%\end{equation*}
+\textbf{Celková potenciální energie}
+\begin{equation*}
+	\Pi = \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ull{B}^e\,dV}_{\ull{K}^e} \ul{\delta}^e
+		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\epsilon}_0 \ dV}_{\ul{F}^{ET}}
+		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{N}^{e^T}\!\ul{X} \ dV}_{\ul{F}^{ef}}
+		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_{\partial\Omega} \ull{N}^{e^T}\!\ul{p} \ dS}_{\ul{F}^{ep}}
+\end{equation*}
+
+\newpage
+\section*{Desky a skořepiny}
+
+Kružnice s největším $R_{max}$ a nejmenším $R_{min}$ poloměrem křivosti leží v navzájem kolmých hlavních rovinách křivosti
+
+\subsection*{Reissner-Mindlinova teorie skořepin}
+%
+\textbf{Předpoklad}: Hmotná normála ke střednici v nedeformovaném stavu zůstává po deformaci přímá
+
+\subsection*{Kirchhofova teorie skořepin}
+%
+\textbf{Předpoklad}: Hmotná normála ke střednici v nedeformovaném stavu přejde po deformaci v normálu k deformované střednici
+%\\
+%\textbf{Důsledek}: Pole posuvů $\vec{u}$ je popsáno pruhybem střednice $w$
+%$$\vec{u} = [u,v,w] \,,\quad w = w(x,y)$$
+
+\subsection*{Typy deformací tenkostěnných těles}
+
+\subsubsection*{Membránová deformace}
+\begin{itemize}
+	\item Řez střednicí se prodlouží, ale nezmění se křivost
+	\item Hmotné normály zůstavají kolmé na deformovanou střednici
+	\item Konstantní po tloušťce
+\end{itemize}
+
+\subsubsection*{Ohybová deformace}
+\begin{itemize}
+	\item Řez střednicí se neprodlouží, ale změní se křivost
+	\item Hmotné normály zůstavají kolmé na deformovanou střednici
+	\item Lineární po tloušťce
+\end{itemize}
+
+\subsubsection*{Smyková příčná deformace}
+\begin{itemize}
+	\item Řez střednicí se neprodlouží, nezmění se křivost
+	\item Hmotné normály zůstávají přímé, ale ne obecně kolmé na deformovanou střednici
+	\item Konstantní po tloušťce
+\end{itemize}
+
+\subsection*{Klasifikace skořepinových prvků}
+\begin{itemize}
+\item Membrány - "nemají ohybová ani příčná smyková napětí"
+\item Desky - nemají membránová napětí
+\item Skořepiny - "mají ohybová napětí"
+	\begin{itemize}
+	\item tenké (thin) - obvykle se míní Kirchhoffovské
+	\item tlusté (thick) - obvykle mindlinovské
+	\item obecné (general/universal) - obvykle mindlinovské se smykovou závorou
+	\end{itemize}
+\end{itemize}
+
+\end{document}
