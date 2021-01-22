@@ -76,16 +76,16 @@ Těleso reprezentujeme jako oblast $\Omega$ v euklidovském prostoru $\mathbbm{E
 \subsection*{Celková potenciální energie}
 %
 \begin{equation*}
-	\Pi = U - W = \frac{1}{2}\int\limits_\Omega \sigma_{ij} \epsilon_{ij} \,dV - \Bigg( \int\limits_\Omega X_i u_i \,dV + \int\limits_{\partial\Omega_\sigma} p_i u_i \,dS \Bigg)
+	\Pi = U - W = \frac{1}{2}\int\limits_\Omega \sigma_{ij} \varepsilon_{ij} \,dV - \Bigg( \int\limits_\Omega X_i u_i \,dV + \int\limits_{\partial\Omega_\sigma} p_i u_i \,dS \Bigg)
 	\ ,\quad
-	\epsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \bigg)
+	\varepsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \bigg)
 \end{equation*}
 %
 \begin{itemize}
 	\item[$U$] - deformační energie
 	\item[$W$] - potenciál vnějších sil
 	\item[$\tenz{\sigma}$] - tenzorové pole napjatostí
-	\item[$\tenz{\epsilon}$] - Cauchyho tenzor deformací
+	\item[$\tenz{\varepsilon}$] - Cauchyho tenzor deformací
 	\item[$\vec{X}$] - pole vnějších objemových sil
 	\item[$\vec{u}$] - pole posuvů
 	\item[$\vec{p}$] - vektor vnějších povrchových sil
@@ -123,9 +123,9 @@ kde $\vec{u}_{\partial\Omega}$ jsou vynucené posuvy.
 Platí identita
 %
 \begin{equation*}
-	\int\limits_\Omega \sigma_{ij} \epsilon_{ij} \,dV - \int\limits_\Omega X_i u_i \,dV - \int\limits_{\partial\Omega_\sigma} p_i u_i \,dS - \int\limits_{\partial\Omega_u} \sigma_{ij} n^0_j u_i \,dS = 0
+	\int\limits_\Omega \sigma_{ij} \varepsilon_{ij} \,dV - \int\limits_\Omega X_i u_i \,dV - \int\limits_{\partial\Omega_\sigma} p_i u_i \,dS - \int\limits_{\partial\Omega_u} \sigma_{ij} n^0_j u_i \,dS = 0
 	\ ,\quad
-	\epsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \bigg)
+	\varepsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \bigg)
 \end{equation*}
 %
 pokud:
@@ -140,9 +140,9 @@ pokud:
 Platí identita
 %
 \begin{equation*}
-	\int\limits_\Omega \sigma_{ij}^0 \delta\epsilon_{ij} \,dV - \int\limits_\Omega X_i \delta u_i \,dV - \int\limits_{\partial\Omega_\sigma} p_i \delta u_i \,dS = 0
+	\int\limits_\Omega \sigma_{ij}^0 \delta\varepsilon_{ij} \,dV - \int\limits_\Omega X_i \delta u_i \,dV - \int\limits_{\partial\Omega_\sigma} p_i \delta u_i \,dS = 0
 	\ ,\quad
-	\delta\epsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial \delta u_i}{\partial x_j} + \frac{\partial \delta u_j}{\partial x_i} \bigg)
+	\delta\varepsilon_{ij} = \frac{1}{2} \bigg(\frac{\partial \delta u_i}{\partial x_j} + \frac{\partial \delta u_j}{\partial x_i} \bigg)
 \end{equation*}
 %
 pokud $\vec{u}^0 + \delta\vec{u}$ je kinematicky přípustné pole posuvů
@@ -157,7 +157,7 @@ kde
 %
 \begin{itemize}[leftmargin=15mm]
 	\item[$\vec{u}^0,\tenz{\sigma}^0$] - řešení úlohy pružnosti
-	\item[$\delta\tenz{\epsilon}$] - Cauchyho tenzor virtuálních deformací
+	\item[$\delta\tenz{\varepsilon}$] - Cauchyho tenzor virtuálních deformací
 	\item[$\delta\vec{u}$] - pole virtuálních posuvů %( \delta\vec{u}(\vec{r}) = \vec{0} \,, \vec{r} \in \partial\Omega_u)\\
 \end{itemize}
 
@@ -165,11 +165,11 @@ kde
 \section*{MKP}
 %
 \subsection*{1D element}
-\textbf{Obecný posuv $u(\xi)$ a deformace $\epsilon(\xi)$ elementu}
+\textbf{Obecný posuv $u(\xi)$ a deformace $\varepsilon(\xi)$ elementu}
 \begin{align*}
 	u(\xi) &= \ul{N}^e\!(\xi)\, \ul{\delta}^e
 	\,,\quad \ul{N}^e = \begin{bmatrix} 1-\frac{\xi}{l} \\ \frac{\xi}{l} \end{bmatrix} - \text{matice tvarových funkcí} \\
-	\epsilon(\xi) &= \ul{B}^e\!(\xi)\, \ul{\delta}^e
+	\varepsilon(\xi) &= \ul{B}^e\!(\xi)\, \ul{\delta}^e
 	\,,\quad \ul{B}^e = \frac{\partial \ul{N}^e}{\partial \xi} = \begin{bmatrix} -\frac{1}{l} \\ \frac{1}{l} \end{bmatrix} - \text{operátor z uzlových posuvů na deformace}
 \end{align*}
 kde
@@ -179,8 +179,8 @@ kde
 
 \textbf{Deformační energie elementu $U^e$}
 \begin{align*}
-	U^e &= \frac{1}{2} \int\limits_0^l E \epsilon^2(\xi) A d\xi
-		%= \frac{1}{2} \int\limits_0^l \epsilon(\xi) E A\,\epsilon(\xi) d\xi
+	U^e &= \frac{1}{2} \int\limits_0^l E \varepsilon^2(\xi) A d\xi
+		%= \frac{1}{2} \int\limits_0^l \varepsilon(\xi) E A\,\varepsilon(\xi) d\xi
 		= \frac{1}{2}\ \ul{\delta}^{e^T} \underbrace{\int\limits_0^l \ul{B}^{e^T}\!E A\,\ul{B}^e d\xi}_{\ull{K}^e}\ \ul{\delta}^e
 		= \frac{1}{2}\ \ul{\delta}^{e^T}\!\ull{K}^e\ \ul{\delta}^e
 		\,,\quad
@@ -255,7 +255,7 @@ kde
 	\item [$\ul{\delta}^e$] - pole uzlových posuvů elementu
 	\\[-.5em]
 	\item [$\ul{u}$] - pole posuvů elementu
-	\item [$\ul{\epsilon}$] - pole deformací elementu
+	\item [$\ul{\varepsilon}$] - pole deformací elementu
 	\\[-.5em]
 	\item [$\ul{\alpha}$] - Parametry pole posuvů
 	\item [$\ull{A}$] - Matice koeficientů
@@ -265,8 +265,8 @@ kde
 	\item [$\ull{N}^e$] - Matice tvarových funkcí
 	\item [$\ull{B}^e$] - Operátor uzlových posunů na deformace
 	\\[-.5em]
-	\item [$\ul{\epsilon}_0$] - pole deformací elementu vlivem teploty
-	\item [$\ul{\epsilon}_\sigma$] - pole deformací elementu vlivem napětí
+	\item [$\ul{\varepsilon}_0$] - pole deformací elementu vlivem teploty
+	\item [$\ul{\varepsilon}_\sigma$] - pole deformací elementu vlivem napětí
 	\\[-.5em]
 	\item [$U$] - Deformační energie
 	\item [$\ull{E}^e$] - matice elastických konstant 
@@ -285,12 +285,12 @@ kde
 \end{itemize}
 \end{multicols}
 %
-\textbf{Pole posuvů $\ul{u}(x,y)$ a deformací $\ul{\epsilon}(x,y)$ elementu}
-%Pole posuvů $\ul{u}$ a deformací $\ul{\epsilon}$ elementu lze vyjádřit jako funkci souřadnic $x,y$ a vektoru uzlových posuvů elementu $\ul{\delta}^e$:
+\textbf{Pole posuvů $\ul{u}(x,y)$ a deformací $\ul{\varepsilon}(x,y)$ elementu}
+%Pole posuvů $\ul{u}$ a deformací $\ul{\varepsilon}$ elementu lze vyjádřit jako funkci souřadnic $x,y$ a vektoru uzlových posuvů elementu $\ul{\delta}^e$:
 %
 \begin{align*}
 	\ul{u}(x,y) &= \ull{A}(x,y)\,\ul{\alpha} = \ull{A}(x,y)\,\ull{S}^{-1} \ul{\delta}^e = \ull{N}^e(x,y)\,\ul{\delta}^e\\
-	\ul{\epsilon}(x,y) &= \ull{D}\,\ull{N}^e(x,y)\,\ul{\delta}^e = \ull{B}^e(x,y)\,\ul{\delta}^e
+	\ul{\varepsilon}(x,y) &= \ull{D}\,\ull{N}^e(x,y)\,\ul{\delta}^e = \ull{B}^e(x,y)\,\ul{\delta}^e
 	\,,\quad
 	D = \renewcommand\arraystretch{1.3}
 	\begin{bmatrix}
@@ -302,37 +302,37 @@ kde
 %
 %\textbf{Deformační energie}
 %\begin{equation*}
-%	U	= \frac{1}{2} \int\limits_\Omega \ul{\epsilon}^T \ull{E}\ \ul{\epsilon} \ dV
+%	U	= \frac{1}{2} \int\limits_\Omega \ul{\varepsilon}^T \ull{E}\ \ul{\varepsilon} \ dV
 %		= \frac{1}{2}\,\ul{\delta}^{e^T}\!\Big( \int\limits_\Omega \ull{B}^T \ull{E}\,\ull{B} \ dV \Big) \ul{\delta}^e
 %		= \frac{1}{2}\,\ul{\delta}^{e^T}\!\ull{K}^e\,\ul{\delta}^e
 %\end{equation*}
 
-\textbf{Změna pole deformací $\ul{\epsilon}$ vlivem teploty}
+\textbf{Změna pole deformací $\ul{\varepsilon}$ vlivem teploty}
 %Izotropní tenzor deformace od teploty
 %\begin{equation*}
-%	\tenz{\epsilon}_0 = \alpha \Delta T \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}
+%	\tenz{\varepsilon}_0 = \alpha \Delta T \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}
 %\end{equation*}
 %
 \begin{align*}
-	\ul{\epsilon} = \ul{\epsilon}_\sigma + \ul{\epsilon}_0 \,,\quad \ul{\epsilon}_0 = \alpha \Delta T \begin{bmatrix}1\\1\\0\end{bmatrix}
+	\ul{\varepsilon} = \ul{\varepsilon}_\sigma + \ul{\varepsilon}_0 \,,\quad \ul{\varepsilon}_0 = \alpha \Delta T \begin{bmatrix}1\\1\\0\end{bmatrix}
 \end{align*}
 %
 \textbf{Hustota deformační energie $\Lambda$}
 \begin{equation*}
-	\Lambda = \frac{1}{2}\,\ul{\epsilon}^T \ul{\sigma}
-		= \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,\ul{\epsilon}_\sigma
-		= \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,(\ul{\epsilon} - \ul{\epsilon}_0)
-		= \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,\ul{\epsilon} - \frac{1}{2}\,\ul{\epsilon}^T \ull{E}\,\ul{\epsilon}_0
+	\Lambda = \frac{1}{2}\,\ul{\varepsilon}^T \ul{\sigma}
+		= \frac{1}{2}\,\ul{\varepsilon}^T \ull{E}\,\ul{\varepsilon}_\sigma
+		= \frac{1}{2}\,\ul{\varepsilon}^T \ull{E}\,(\ul{\varepsilon} - \ul{\varepsilon}_0)
+		= \frac{1}{2}\,\ul{\varepsilon}^T \ull{E}\,\ul{\varepsilon} - \frac{1}{2}\,\ul{\varepsilon}^T \ull{E}\,\ul{\varepsilon}_0
 \end{equation*}
 
 \textbf{Deformační energie $U$}
 \begin{equation*}
 U = \int\limits_\Omega \Lambda \ dV
-	= \frac{1}{2} \int\limits_\Omega \ul{\epsilon}^T \ull{E}\,\ul{\epsilon} \ dV
-	+ \frac{1}{2} \int\limits_\Omega \ul{\epsilon}^T \ull{E}\,\ul{\epsilon}_0 \ dV
+	= \frac{1}{2} \int\limits_\Omega \ul{\varepsilon}^T \ull{E}\,\ul{\varepsilon} \ dV
+	+ \frac{1}{2} \int\limits_\Omega \ul{\varepsilon}^T \ull{E}\,\ul{\varepsilon}_0 \ dV
 	= \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ull{B}^e\,dV}_{\ull{K}^e} \ul{\delta}^e
-	- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\epsilon}_0 \ dV}_{\ul{F}^{ET}}
-	%= \frac{1}{2}\,\ul{\delta}^e \ull{K}^e \ul{\delta}^e - \frac{1}{2}\,\ul{\delta}^e\!\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\epsilon}_0 \ dV
+	- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\varepsilon}_0 \ dV}_{\ul{F}^{ET}}
+	%= \frac{1}{2}\,\ul{\delta}^e \ull{K}^e \ul{\delta}^e - \frac{1}{2}\,\ul{\delta}^e\!\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\varepsilon}_0 \ dV
 \end{equation*}
 %
 %\textbf{Potenciál vnější objemové síly}
@@ -344,7 +344,7 @@ U = \int\limits_\Omega \Lambda \ dV
 \textbf{Celková potenciální energie}
 \begin{equation*}
 	\Pi = \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ull{B}^e\,dV}_{\ull{K}^e} \ul{\delta}^e
-		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\epsilon}_0 \ dV}_{\ul{F}^{ET}}
+		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{B}^{e^T}\!\ull{E}\ \ul{\varepsilon}_0 \ dV}_{\ul{F}^{ET}}
 		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_\Omega \ull{N}^{e^T}\!\ul{X} \ dV}_{\ul{F}^{ef}}
 		- \frac{1}{2}\,\ul{\delta}^{e^T}\!\underbrace{\int\limits_{\partial\Omega} \ull{N}^{e^T}\!\ul{p} \ dS}_{\ul{F}^{ep}}
 \end{equation*}
@@ -367,14 +367,14 @@ Kružnice s největším $R_{max}$ a nejmenším $R_{min}$ poloměrem křivosti 
 
 \subsection*{Typy deformací tenkostěnných těles}
 
-\subsubsection*{Membránová deformace $\epsilon_m$}
+\subsubsection*{Membránová deformace $\varepsilon_m$}
 \begin{itemize}
 	\item Řez střednicí se prodlouží, ale nezmění se křivost
 	\item Hmotné normály zůstavají kolmé na deformovanou střednici
 	\item Konstantní po tloušťce
 \end{itemize}
 
-\subsubsection*{Ohybová deformace $\epsilon_o$}
+\subsubsection*{Ohybová deformace $\varepsilon_o$}
 \begin{itemize}
 	\item Řez střednicí se neprodlouží, ale změní se křivost
 	\item Hmotné normály zůstavají kolmé na deformovanou střednici
@@ -390,14 +390,34 @@ Kružnice s největším $R_{max}$ a nejmenším $R_{min}$ poloměrem křivosti 
 
 \subsection*{Klasifikace skořepinových prvků}
 \begin{itemize}
-\item Membrány - "nemají ohybová ani příčná smyková napětí" $\epsilon_m$
-\item Desky - "nemají membránová napětí" $\epsilon_o, \gamma_t$
-\item Skořepiny - "mají ohybová napětí" $\epsilon_m, \epsilon_o, (\gamma_t)$
+\item Membrány - "nemají ohybová ani příčná smyková napětí" $\varepsilon_m$
+\item Desky - "nemají membránová napětí" $\varepsilon_o, \gamma_t$
+\item Skořepiny - "mají ohybová napětí" $\varepsilon_m, \varepsilon_o, (\gamma_t \text{ - thick, general/universal})$
 	\begin{itemize}
 	\item tenké (thin) - obvykle se míní Kirchhoffovské
 	\item tlusté (thick) - obvykle Mindlinovské
 	\item obecné (general/universal) - obvykle mindlinovské se smykovou závorou
 	\end{itemize}
 \end{itemize}
+
+\newpage
+\section*{Numerická integrace}
+
+\subsection*{Lagrangeův interpolační polynom}
+\begin{equation}
+l_j = \frac{(r-r_0)(r-r_1)\dots(r-r_{j-1})(r-r_{j+1})\dots(r-r_n)}{(r_j-r_0)(r_j-r_1)\dots(r_j-r_{j-1})(r_j-r_{j+1})\dots(r_j-r_n)}
+\,;\quad
+l_j(r_j) = 1 \,;\;
+l_j(r_{k \neq j}) = 0 \,;\;
+l_j \text{ je řádu $n$ v $r$}
+\end{equation}
+
+\subsection*{Polynomická interpolační funkce}
+\begin{equation}
+\psi(r) = f_0 l_0(r) + f_1 l_1(r) + \dots + f_n l_n(r)
+\,;\quad
+\psi(r_i) = f(r_i) = f_i \,;\;
+\psi \in p^n
+\end{equation}
 
 \end{document}
